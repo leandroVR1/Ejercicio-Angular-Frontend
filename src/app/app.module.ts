@@ -17,6 +17,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,10 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
       timeOut: 4000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    }), // ToastrModule added
+    }), 
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi:true}
     
   ],
   bootstrap: [AppComponent]
