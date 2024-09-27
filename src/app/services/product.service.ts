@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  addProduct(value: any) {
+    throw new Error('Method not implemented.');
+  }
 
   private myAppUrl: string;
   private myApiUrl: string;
@@ -25,4 +28,6 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`);
     
   }
+  
+
 }

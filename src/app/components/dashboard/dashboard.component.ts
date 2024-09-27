@@ -22,4 +22,13 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  /*addProduct() {
+    if (this.productForm.valid) {
+      this.productService.addProduct(this.productForm.value).subscribe(() => {
+        this.getProducts();
+        this.productForm.reset();
+      });
+    }
+  }*/
+
 }
