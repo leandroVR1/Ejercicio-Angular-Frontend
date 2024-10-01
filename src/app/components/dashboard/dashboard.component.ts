@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,16 +12,22 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class DashboardComponent implements OnInit {
   listProduct: Product[] = []
+  loading: boolean = false
 
-  constructor(private _productService : ProductService) { }
+  constructor(
+    private toastr: ToastrService,
+    private _productService : ProductService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getProducts();
   }
 
   getProducts(){
-    this._productService.getProducts().subscribe(data =>{
-    this.listProduct = data;
+    this.loading = true;
+    this._productService.getProducts().subscribe((data: Product[]) => {
+      this.listProduct = data;
+      this.loading = false;
     })
   }
 
@@ -31,4 +40,19 @@ export class DashboardComponent implements OnInit {
     }
   }*/
 
+    deleteProduct(id: number){
+      this.loading = true;
+      this._productService.deleteProduct(id).subscribe(() =>{
+        this.loading = false;
+        this.getProducts();
+        this.toastr.warning('El producto fue eliminado con exito' , 'Producto Eliminado')
+
+
+        
+        
+      })
+
+    
+
+    }
 }

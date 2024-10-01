@@ -6,12 +6,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 //Guards
 import { AuthGuard } from './utils/auth.guard';
+import { AddEditProductComponent } from './components/add-edit-product/add-edit-product.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'login', component:LoginComponent},
   {path: 'signIn', component: SignInComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'add', component: AddEditProductComponent},
+  {path: 'edit/:id', component: AddEditProductComponent},
   {path: '**',  redirectTo: 'login', pathMatch: 'full' }
 
 ];

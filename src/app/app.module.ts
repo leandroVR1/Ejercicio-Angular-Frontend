@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 
 // Modulos
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 // Componentes
@@ -19,6 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { AddEditProductComponent } from './components/add-edit-product/add-edit-product.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,15 @@ import { CreateProductComponent } from './components/create-product/create-produ
     DashboardComponent,
     NavbarComponent,
     SpinnerComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    AddEditProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
       timeOut: 4000,
